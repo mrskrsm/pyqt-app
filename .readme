@@ -19,3 +19,5 @@ ISTRUZIONI:
       Per esportare file docx ci mette meno tempo, non estraendo le immagini.
     - una volta completato il processo (controllando la cartella utils), spostare tutto in un'altra cartella (ovviamente non spostando gli script).
 
+Gli script sono quello che sono, più o meno funzionano per tutti i pdf/docx, però è molto generico.
+Magari create altri script basati su questi che vanno più nello specifico? 
