@@ -1,7 +1,6 @@
 from unstructured.partition.docx import partition_docx
 from multiprocessing import Process
 import ast, glob, os
-#from titles_enum import titles
 
 
 CWD = 'pyqt_project/utils'
@@ -39,7 +38,6 @@ def writeToFile():
 
 
 fileList = glob.glob(f'{CWD}/*.docx')
-print(fileList)
 if len(fileList) == 1:
     parsing = Process(target=parseDocx(fileList[0]))
     parsing.start()
