@@ -1,0 +1,2 @@
+pyqt_project/utils/*
+!pyqt_project/utils/document.*
