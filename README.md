@@ -5,7 +5,9 @@
 - Hardware Virtualization attiva (per controllare, apri Gestione Attività > Prestazioni > CPU)
 
 # SETTAGGIO
-Clona questa repo e scarica l'unica dependency (`pip install -r requirements.txt`)
+Clona questa repo e scarica l'unica dependency (`pip install -r requirements.txt`).
+
+I file indispensabili sono quelli dentro la cartella pyqt_project.
 
 Apri Docker Desktop e aspetta che Docker Engine sia online.
 
