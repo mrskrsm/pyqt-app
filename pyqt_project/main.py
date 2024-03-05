@@ -148,18 +148,18 @@ class AppWindow(QMainWindow):
                 process = Process(target=self.task(text))
                 process.start()
                 process.join()
-                os.system(f'docker exec unstruct python3 pyqt_project/scriptPdf.py')
+                os.system(f'docker exec unstruct python3 pyqt_project/scripts/scriptPdf.py')
 
             case 1:
                 process = Process(target=self.task(text))
                 process.start()
                 process.join()
-                os.system(f'docker exec unstruct python3 pyqt_project/scriptDocx.py')
+                os.system(f'docker exec unstruct python3 pyqt_project/scripts/scriptDocx.py')
 
 
     def task(self, path):
         path = re.sub(r'/', r'\\', path)
-        print(fr'copy "{path}" "{CWD}\utils\"')
+        os.system(fr'copy "{path}" "{CWD}\utils\"')
 
 ####################################################################################################################
 

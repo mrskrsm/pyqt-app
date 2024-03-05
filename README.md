@@ -15,5 +15,8 @@ Apri un terminale e inserisci questi comandi:
 
 `docker pull downloads.unstructured.io/unstructured-io/unstructured:latest`
 
-`docker run -dt -v --name unstructured downloads.unstructured.io/unstructured-io/unstructured:latest`
+`docker run -dt -v <pathToRepoRoot>/pyqt_project:/home/notebook-user/pyqt_project --name unstructured downloads.unstructured.io/unstructured-io/unstructured:latest`
 
+Ora, tutti i file che sono presenti nella cartella pyqt_project saranno presenti dentro il container appena creato.
+
+Per avviare l'applicazione, `python main.py` dalla cartella contenente main.py.
