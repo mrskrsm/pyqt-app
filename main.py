@@ -1,10 +1,9 @@
 from PyQt5.QtWidgets import *
 from multiprocessing import Process
-import os
+import os, re
 
 
 CWD = os.getcwd()
-
 
 class RadioButton(QRadioButton):
     def __init__(self):
@@ -97,8 +96,6 @@ class AppWindow(QMainWindow):
 
 
     def swapFileTypeSelection(self, val):
-        # chiudere il problema degli eventi multipli
-        # penso che questo problema sia risolto
         match val:
             case 0:
                 self.btnSelectDocx.setEnabled(False)
@@ -161,9 +158,10 @@ class AppWindow(QMainWindow):
 
 
     def task(self, path):
-        os.system(f'cp "{path}" {CWD}/utils')
+        path = re.sub(r'/', r'\\', path)
+        print(fr'copy "{path}" "{CWD}\utils\"')
 
-####################################################################################################################à
+####################################################################################################################
 
 def main():
     gui = QApplication([])
