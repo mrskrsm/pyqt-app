@@ -20,12 +20,14 @@ Ora, tutti i file che sono presenti nella cartella pyqt_project saranno presenti
 
 Per avviare l'applicazione, `python main.py` dalla cartella contenente main.py.
 
+L'applicazione non risponderà una volta iniziato il processo. Non crashare l'applicazione ok?
+
 # FYI
 Gli script vanno molto sul generico, di conseguenza l'esportazione sarà sporca. Fare le opportune modifiche a gli script o modificare manualmente i file .txt di output dovrebbe essere sufficiente a risolvere questo problema.
 
 Ad ogni esportazione completata, pulire la cartella `utils` da qualsiasi file 
 
-(tranne 2 file, esattamente 1 file pdf e 1 file docx. Scegli tu se togliere o no)
+(tranne 2 file, esattamente 1 file pdf e 1 file docx. Scegli tu se togliere o no).
 
 # LINK UTILI
 [https://unstructured-io.github.io/unstructured/installation/docker.html](https://unstructured-io.github.io/unstructured/installation/docker.html)
