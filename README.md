@@ -23,4 +23,6 @@ Per avviare l'applicazione, `python main.py` dalla cartella contenente main.py.
 # FYI
 Gli script vanno molto sul generico, di conseguenza l'esportazione sarà sporca. Fare le opportune modifiche a gli script o modificare manualmente i file .txt di output dovrebbe essere sufficiente a risolvere questo problema.
 
-Ad ogni esportazione completata, pulire la cartella `utils` da qualsiasi file (tranne 2 file, esattamente 1 file pdf e 1 file docx. Scegli tu se togliere o no)
+Ad ogni esportazione completata, pulire la cartella `utils` da qualsiasi file 
+
+(tranne 2 file, esattamente 1 file pdf e 1 file docx. Scegli tu se togliere o no)
