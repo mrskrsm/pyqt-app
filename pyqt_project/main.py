@@ -148,13 +148,13 @@ class AppWindow(QMainWindow):
                 process = Process(target=self.task(text))
                 process.start()
                 process.join()
-                os.system(f'docker exec unstruct python3 pyqt_project/scripts/scriptPdf.py')
+                os.system(f'docker exec unstructred python3 pyqt_project/scripts/scriptPdf.py')
 
             case 1:
                 process = Process(target=self.task(text))
                 process.start()
                 process.join()
-                os.system(f'docker exec unstruct python3 pyqt_project/scripts/scriptDocx.py')
+                os.system(f'docker exec unstructured python3 pyqt_project/scripts/scriptDocx.py')
 
 
     def task(self, path):

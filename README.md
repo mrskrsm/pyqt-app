@@ -26,3 +26,8 @@ Gli script vanno molto sul generico, di conseguenza l'esportazione sarà sporca.
 Ad ogni esportazione completata, pulire la cartella `utils` da qualsiasi file 
 
 (tranne 2 file, esattamente 1 file pdf e 1 file docx. Scegli tu se togliere o no)
+
+# LINK UTILI
+[https://unstructured-io.github.io/unstructured/installation/docker.html](https://unstructured-io.github.io/unstructured/installation/docker.html)
+
+[https://unstructured-io.github.io/unstructured/metadata.html](https://unstructured-io.github.io/unstructured/metadata.html)
