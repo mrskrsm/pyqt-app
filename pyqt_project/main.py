@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import *
+from PyQt5.QtCore import QThread, pyqtSignal
 from multiprocessing import Process
 import os, re
 
@@ -27,6 +28,30 @@ class PushButton(QPushButton):
 
     def getValue(self):
         return self.value
+
+
+class Worker(QThread):
+    finished = pyqtSignal()
+
+    def task(self, path):
+        path = re.sub(r'/', r'\\', path)
+        os.system(fr'copy "{path}" "{CWD}\utils\"')
+
+    def run(self, value, path):
+        match value:
+            case 0:
+                process = Process(target=self.task(path))
+                process.start()
+                process.join()
+                os.system(f'docker exec unstruct python3 pyqt_project/scripts/scriptPdf.py')
+
+            case 1:
+                process = Process(target=self.task(path))
+                process.start()
+                process.join()
+                os.system(f'docker exec unstruct python3 pyqt_project/scripts/scriptDocx.py')
+        
+        self.finished.emit()
 
 
 class AppWindow(QMainWindow):
@@ -106,7 +131,7 @@ class AppWindow(QMainWindow):
                 try:
                     self.btnEnter.clicked.disconnect()
                 except:
-                    print('[EXCEPT TRIGGERED] event dupe prevented')
+                    pass
                 self.btnEnter.setEnabled(False)
                 self.btnEnter.setValue(0)
 
@@ -119,7 +144,7 @@ class AppWindow(QMainWindow):
                 try:
                     self.btnEnter.clicked.disconnect()
                 except:
-                    print('[EXCEPT TRIGGERED] event dupes prevented')
+                    pass
                 self.btnEnter.setEnabled(False)
                 self.btnEnter.setValue(1)
     
@@ -133,33 +158,29 @@ class AppWindow(QMainWindow):
                 if fname[0] != '':
                     self.pathToPdf.setText('File selected!')
                     self.btnEnter.setEnabled(True)
-                    self.btnEnter.clicked.connect(lambda: self.on_click(fname[0]))
+                    self.btnEnter.clicked.connect(lambda: self.on_click(self.btnEnter.getValue(), fname[0]))
             case 1:
                 fname = QFileDialog.getOpenFileName(self, 'Open File', CWD, 'DOCX Files (*.docx)')
                 if fname[0] != '':
                     self.pathToDocx.setText('File selected!')
                     self.btnEnter.setEnabled(True)
-                    self.btnEnter.clicked.connect(lambda: self.on_click(fname[0]))
+                    self.btnEnter.clicked.connect(lambda: self.on_click(self.btnEnter.getValue(), fname[0]))
 
 
-    def on_click(self, text):
-        match self.btnEnter.getValue():
-            case 0:
-                process = Process(target=self.task(text))
-                process.start()
-                process.join()
-                os.system(f'docker exec unstructred python3 pyqt_project/scripts/scriptPdf.py')
+    def on_click(self, valBtn, pathToFile):
+        self.thread = QThread()
+        self.worker = Worker()
+        self.worker.moveToThread(self.thread)
 
-            case 1:
-                process = Process(target=self.task(text))
-                process.start()
-                process.join()
-                os.system(f'docker exec unstructured python3 pyqt_project/scripts/scriptDocx.py')
+        self.thread.started.connect(lambda: self.worker.run(valBtn, pathToFile))
+        self.worker.finished.connect(self.thread.quit)
+        self.worker.finished.connect(self.worker.deleteLater)
+        self.thread.finished.connect(self.thread.deleteLater)
+        
+        self.thread.start()
 
-
-    def task(self, path):
-        path = re.sub(r'/', r'\\', path)
-        os.system(fr'copy "{path}" "{CWD}\utils\"')
+        self.btnEnter.setEnabled(False)
+        self.thread.finished.connect(lambda: self.btnEnter.setEnabled(True))
 
 ####################################################################################################################
 
