@@ -14,8 +14,8 @@ def parsePdf(file):
     with open(f'{CWD}/output.py', 'a') as f:
         for i in range(len(elements)):
             f.write(f'{str(elements[i].to_dict())}\n')
-
     f.close()
+
 
 def writeToFile():
     buffer = ""
