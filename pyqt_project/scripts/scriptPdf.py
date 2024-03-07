@@ -26,6 +26,11 @@ def writeToFile():
             cat = element['type']
 
             match cat:
+                case 'Title':
+                    out.write(f'{buffer}')
+                    out.write(f'<h1>{element["text"]}</h1>\n')
+                    buffer = ""
+
                 case 'Table':
                     out.write(f'{buffer}')
                     out.write(f'\n{element["metadata"]["text_as_html"]}\n\n')
@@ -48,10 +53,10 @@ def writeToFile():
 fileList = glob.glob(f'{CWD}/*.pdf')
 print(fileList)
 if len(fileList) == 1:
-    parsing = Process(target=parsePdf(fileList[0]))
+    '''parsing = Process(target=parsePdf(fileList[0]))
     parsing.start()
     parsing.join()
-    os.system(f'mv /home/notebook-user/figures {CWD}')
+    os.system(f'mv /home/notebook-user/figures {CWD}')'''
     writing = Process(target=writeToFile)
     writing.start()
     writing.join()

@@ -21,6 +21,11 @@ def writeToFile():
             cat = element['type']
 
             match cat:
+                case 'Title':
+                    out.write(f'{buffer}\n')
+                    out.write(f'\n<h1>{element["text"]}</h1>\n')
+                    buffer = ""
+
                 case 'Table':
                     out.write(f'{buffer}\n')
                     tableContent = element.get('metadata')['text_as_html']
