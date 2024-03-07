@@ -3,7 +3,7 @@ from multiprocessing import Process
 import ast, os, glob
 
 
-CWD = 'pyqt_project/utils'
+CWD = '/home/notebook-user/pyqt_project/utils'
 
 def parsePdf(file):
     elements = partition_pdf(filename=f'{file}', 
