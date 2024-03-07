@@ -1,6 +1,6 @@
-from unstructured.partition.docx import partition_docx
+from unstructured.partition.docx import partition_docx      #ignora
 from multiprocessing import Process
-import ast, glob, os
+import ast, glob
 
 
 CWD = 'pyqt_project/utils'
