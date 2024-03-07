@@ -51,12 +51,14 @@ def writeToFile():
 
 
 fileList = glob.glob(f'{CWD}/*.pdf')
-print(fileList)
+
 if len(fileList) == 1:
     parsing = Process(target=parsePdf(fileList[0]))
     parsing.start()
     parsing.join()
+    
     os.system(f'mv /home/notebook-user/figures {CWD}')
+
     writing = Process(target=writeToFile)
     writing.start()
     writing.join()

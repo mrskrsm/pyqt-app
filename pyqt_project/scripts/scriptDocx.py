@@ -3,13 +3,14 @@ from multiprocessing import Process
 import ast, glob
 
 
-CWD = 'pyqt_project/utils'
+CWD = '/home/notebook-user/pyqt_project/utils'
 
 def parseDocx(file):
     elements = partition_docx(filename=f'{file}', extra_whitespace=True)
     with open(f'{CWD}/output.py', 'a') as f:
         for i in range(len(elements)):
             f.write(f'{str(elements[i].to_dict())}\n')
+    f.close()
 
 
 def writeToFile():
@@ -37,16 +38,17 @@ def writeToFile():
                     buffer = f'{buffer}{element["text"]}\n'
 
         out.write(f'{buffer}')
-    
     out.close()
     f.close()
 
 
 fileList = glob.glob(f'{CWD}/*.docx')
+
 if len(fileList) == 1:
     parsing = Process(target=parseDocx(fileList[0]))
     parsing.start()
     parsing.join()
+
     writing = Process(target=writeToFile)
     writing.start()
     writing.join()
