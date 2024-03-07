@@ -22,6 +22,8 @@ Per avviare l'applicazione, `python main.py` dalla cartella contenente main.py.
 
 L'applicazione non risponderà una volta iniziato il processo. Non crashare l'applicazione ok?
 
+Mediamente, l'esportazione da pdf impiega 10 minuti circa, ma dipende da il file dato. L'esportazione da docx impiega 1-2 minuti.
+
 # FYI
 Gli script vanno molto sul generico, di conseguenza l'esportazione sarà sporca. Fare le opportune modifiche a gli script o modificare manualmente i file .txt di output dovrebbe essere sufficiente a risolvere questo problema.
 
