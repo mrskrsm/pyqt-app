@@ -1,4 +1,4 @@
-# REQUIREMENTS
+# REQUISITI
 - Python 3.x
 - Docker Desktop
 - Hardware Virtualization attiva (per controllare, apri Gestione Attività > Prestazioni > CPU)
@@ -24,14 +24,14 @@ L'applicazione non risponderà una volta iniziato il processo. Non crashare l'ap
 
 Mediamente, l'esportazione da pdf impiega 10 minuti circa, ma dipende da il file dato. L'esportazione da docx impiega 1-2 minuti.
 
-# FYI
+# INFORMAZIONI GENERALI
 Gli script vanno molto sul generico, di conseguenza l'esportazione sarà sporca. Fare le opportune modifiche a gli script o modificare manualmente i file .txt di output dovrebbe essere sufficiente a risolvere questo problema.
 
 Ad ogni esportazione completata, pulire la cartella `utils` da qualsiasi file 
 
 (tranne 2 file, esattamente 1 file pdf e 1 file docx. Scegli tu se togliere o no).
 
-Il riconoscimento da parte della libreria Unstructured dei titoli non è accurato. 
+Il riconoscimento da parte della libreria Unstructured dei titoli non è accurato.
 
 # LINK UTILI
 [https://unstructured-io.github.io/unstructured/installation/docker.html](https://unstructured-io.github.io/unstructured/installation/docker.html)
