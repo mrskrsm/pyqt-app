@@ -1,6 +1,6 @@
 from unstructured.partition.docx import partition_docx      #ignora
 from multiprocessing import Process
-import ast, glob
+import ast, glob, re
 
 
 CWD = '/home/notebook-user/pyqt_project/utils'
@@ -30,8 +30,8 @@ def writeToFile():
                 case 'Table':
                     out.write(f'{buffer}\n')
                     tableContent = element.get('metadata')['text_as_html']
-                    tableContent = tableContent.replace(tableContent[tableContent.find('\n')], '')
-                    out.write(f'\n{tableContent}\n\n')
+                    tableContent = re.sub(r'\s+', '', tableContent)
+                    out.write(f'{tableContent}\n\n')
                     buffer = ""
 
                 case _:
